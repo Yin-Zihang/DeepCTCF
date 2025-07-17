@@ -2,7 +2,6 @@
 ### Load arguments
 
 import sys, getopt
-#python IMP_DeepCTCF_predict.py -s New_Sequences.fasta -m DeepCTCF.h5
 def main(argv):
    new_seq = ''
    model_ID = ''
@@ -52,7 +51,7 @@ for eachLine in open(new_seq):
 		sequences.append(sequence)
 		seqName[sequence]=name
 	else:
-		name=eachLine.split()[0]
+		name=eachLine.split()[0].split('>')[1]
 
 print('%s sequences loaded'%len(sequences))
 basecat=[0,1,2,3]
