@@ -76,16 +76,16 @@ python train.py
 
 Training parameters:
 
-  Parameter                 Value
-  ------------------------- --------------------
-  Optimizer                 Adam
-  Learning rate             1e-4
-  Loss                      Mean squared error
-  Batch size                32
-  Maximum epochs            50
-  Early stopping patience   10
-  L2 regularization         0.3
-  Dropout                   0.2
+| Parameter | Value |
+|-----------|-------|
+| Optimizer | Adam |
+| Learning rate | 1e-4 |
+| Loss | Mean squared error |
+| Batch size | 32 |
+| Maximum epochs | 50 |
+| Early stopping patience | 10 |
+| L2 regularization | 0.3 |
+| Dropout | 0.2 |
 
 # 6. Output model
 
