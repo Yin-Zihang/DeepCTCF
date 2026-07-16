@@ -6,15 +6,26 @@ model file.
 
 # 1. Requirements
 
-Create the environment:
+DeepCTCF was developed using:
 
-``` bash
-conda env create -f environment_DeepCTCF.yml
+- Python 3.8.13
+- TensorFlow 2.4.1
+- Keras 2.4.3
+- NumPy 1.24.4
+- Pandas 1.4.2
+- SciPy 1.7.1
+- scikit-learn 0.24.2
+
+
+The environment can be recreated using:
+conda create -n DeepCTCF python=3.8.13
 conda activate DeepCTCF
-```
-
-Recommended environment: - Python 3.8.13 - TensorFlow 2.4.1 - Keras
-2.4.3 - NumPy - Pandas - SciPy - scikit-learn
+pip install tensorflow==2.4.1
+pip install keras==2.4.3
+pip install numpy==1.24.4
+pip install pandas==1.4.2
+pip install scipy==1.7.1
+pip install scikit-learn==0.24.2
 
 # 2. Training data preparation
 
@@ -116,7 +127,6 @@ The resulting HDF5 model can be used for prediction.
     ├── training_tutorials/
         ├── train.py
         └── TRAINING.md
-    ├── environment_DeepCTCF.yml
     ├──model/
         └── DeepCTCF.h5
     ├── DeepCTCF_predict.py
