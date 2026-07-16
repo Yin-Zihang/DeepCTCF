@@ -6,9 +6,12 @@ import pandas as pd
 import tensorflow as tf
 import matplotlib.pyplot as plt
 from scipy.stats import pearsonr, spearmanr
-from tensorflow.keras.models import Sequential
 from tensorflow.keras.regularizers import l2
+from tensorflow.keras.models import Sequential
+from tensorflow.keras.callbacks import Callback
 from tensorflow.keras.layers import BatchNormalization
+from tensorflow.keras.callbacks import EarlyStopping
+from sklearn.metrics import r2_score
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import LabelEncoder, OneHotEncoder
 from sklearn.metrics import mean_squared_error, mean_absolute_error, r2_score
@@ -94,9 +97,6 @@ model.compile(loss='mean_squared_error', optimizer=optimizer)
 # print model architecture
 model.summary()
 
-from sklearn.metrics import r2_score
-from tensorflow.keras.callbacks import Callback
-from sklearn.metrics import r2_score
 
 
 class R2Callback(tf.keras.callbacks.Callback):
@@ -116,7 +116,7 @@ val_data = (test_features, test_labels)
 r2_callback = R2Callback(val_data)
 
 #early stopping
-from tensorflow.keras.callbacks import EarlyStopping
+
 early_stopping = EarlyStopping(monitor='val_loss', patience=10, restore_best_weights=True)
 
 # train the model
