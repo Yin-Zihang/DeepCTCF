@@ -99,10 +99,10 @@ Example files: - New_Sequences.fasta - DeepCTCF_predicted.csv
 # 8. Retraining DeepCTCF with new datasets
 
 Prepare a dataset following the required format, modify the input path
-in `2_train.py`, and run:
+in `train.py`, and run:
 
 ``` bash
-python 2_train.py
+python train.py
 ```
 
 The resulting HDF5 model can be used for prediction.
@@ -115,6 +115,6 @@ The resulting HDF5 model can be used for prediction.
     ├── environment_DeepCTCF.yml
     ├── DeepCTCF.h5
     ├── DeepCTCF_predict.py
-    ├── 2_train.py
+    ├── train.py
     ├── New_Sequences.fasta
     └── DeepCTCF_predicted.csv
