@@ -7,6 +7,8 @@ import tensorflow as tf
 import matplotlib.pyplot as plt
 from scipy.stats import pearsonr, spearmanr
 from tensorflow.keras.models import Sequential
+from tensorflow.keras.regularizers import l2
+from tensorflow.keras.layers import BatchNormalization
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import LabelEncoder, OneHotEncoder
 from sklearn.metrics import mean_squared_error, mean_absolute_error, r2_score
@@ -70,14 +72,11 @@ print("Test labels shape:", test_labels.shape)
 
 # build model
 
-from tensorflow.keras.regularizers import l2
-from tensorflow.keras.layers import BatchNormalization
-
 model = Sequential()
 model.add(Conv1D(filters=128, kernel_size=5, activation='relu', input_shape=(sequence_length, 4)))
 model.add(MaxPooling1D(pool_size=2))
 
-model.add(Conv1D(filters=128, kernel_size=10, activation='relu'))  # 添加一个新的卷积层
+model.add(Conv1D(filters=128, kernel_size=10, activation='relu')) 
 model.add(MaxPooling1D(pool_size=2))
 
 model.add(Conv1D(filters=128, kernel_size=4, activation='relu'))
@@ -186,7 +185,7 @@ residuals = test_labels - test_predictions
 
 plt.figure(figsize=(8, 6))
 plt.scatter(test_labels, residuals, alpha=0.5)
-plt.axhline(y=0, color='red', linestyle='--')  # 零线
+plt.axhline(y=0, color='red', linestyle='--')  
 plt.title('Residuals vs test_labels')
 plt.xlabel('test_labels')
 plt.ylabel('Residuals')
