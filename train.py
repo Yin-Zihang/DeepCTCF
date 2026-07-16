@@ -97,8 +97,6 @@ model.compile(loss='mean_squared_error', optimizer=optimizer)
 # print model architecture
 model.summary()
 
-
-
 class R2Callback(tf.keras.callbacks.Callback):
     def __init__(self, val_data):
         super(R2Callback, self).__init__()  
@@ -110,13 +108,13 @@ class R2Callback(tf.keras.callbacks.Callback):
         r2 = r2_score(y_val, y_pred)
         logs['val_r2'] = r2  
 
+
 # prepare validation set
 val_data = (test_features, test_labels)
 #  add r2 callback
 r2_callback = R2Callback(val_data)
 
 #early stopping
-
 early_stopping = EarlyStopping(monitor='val_loss', patience=10, restore_best_weights=True)
 
 # train the model
@@ -125,12 +123,10 @@ history = model.fit(train_features, train_labels,
                     callbacks=[early_stopping, r2_callback],
                     verbose=0)
 
-
 # save the model
 model.save(r'./example.h5')
 
 # loss curve
-
 plt.figure()
 plt.plot(history.history['loss'], label='train')
 plt.plot(history.history['val_loss'], label='validation')
@@ -142,11 +138,8 @@ plt.savefig('loss.png')
 
 # predict on test set
 test_predictions = model.predict(test_features)
-
-# evaluation
 mse = mean_squared_error(test_labels, test_predictions)
 r2 = r2_score(test_labels, test_predictions)
-
 print(f"Mean Squared Error (MSE): {mse}")
 print(f"R² Score: {r2}")
 plt.figure()
@@ -158,12 +151,10 @@ plt.legend()
 plt.savefig('Mean Squared Error.png')
 
 
-
-# flatten the predictions on test set
+# scatter plot
 test_predictions = model.predict(test_features).flatten()
 scc, _ = spearmanr(test_labels, test_predictions)
 print(f"Spearman Correlation Coefficient (SCC): {scc}")
-# scatter plot
 plt.figure(figsize=(8, 6))
 plt.scatter(test_labels, test_predictions, alpha=0.5, label='Predicted vs Actual')
 plt.plot([min(test_labels), max(test_labels)], [min(test_labels), max(test_labels)], color='green', linestyle='--', label='Ideal Line')
@@ -172,7 +163,6 @@ plt.plot([min(test_labels), max(test_labels)], [min(test_labels), max(test_label
 z = np.polyfit(test_labels, test_predictions, 1)
 p = np.poly1d(z)
 plt.plot(test_labels, p(test_labels), color='red', linestyle='--', label=f'SCC: {scc:.2f}')
-
 plt.title('Predicted vs Actual Values with SCC Line')
 plt.xlabel('Actual Values')
 plt.ylabel('Predicted Values')
@@ -181,8 +171,6 @@ plt.savefig('Spearman Correlation.png')
 
 # Residuals vs test_labels
 residuals = test_labels - test_predictions
-
-
 plt.figure(figsize=(8, 6))
 plt.scatter(test_labels, residuals, alpha=0.5)
 plt.axhline(y=0, color='red', linestyle='--')  
