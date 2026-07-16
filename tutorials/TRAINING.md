@@ -60,7 +60,7 @@ Architecture:
 Run:
 
 ``` bash
-python 2_train.py
+python train.py
 ```
 
 Training parameters:
