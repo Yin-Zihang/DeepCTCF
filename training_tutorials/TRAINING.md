@@ -129,7 +129,6 @@ The resulting HDF5 model can be used for prediction.
         └── TRAINING.md
     ├──model/
         └── DeepCTCF.h5
-    ├── DeepCTCF_predict.py
     └── examples/
         ├── DeepCTCF_predict.py
         ├── New_Sequences.fasta
