@@ -124,7 +124,7 @@ history = model.fit(train_features, train_labels,
                     verbose=0)
 
 # save the model
-model.save(r'./example.h5')
+model.save(r'../model/example.h5')
 
 # loss curve
 plt.figure()
