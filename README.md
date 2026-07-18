@@ -27,6 +27,6 @@ python DeepCTCF_predict.py \
 
 
 Where:
-* -s FASTA file with input DNA sequences
+* -s FASTA file with 42-bp input DNA sequences
 * -m pretrained model
 * The prediction results are saved as: DeepCTCF_predicted.csv
