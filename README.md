@@ -11,8 +11,8 @@ source activate DeepCTCF
 conda install scikit-learn
 ```
 
-### Predict the affinity to CTCF for new DNA sequences
-To predict the affinity to CTCF protein for new DNA sequences, please run:
+### Predict the affinity to CTCF for DNA sequences
+To predict the affinity to CTCF protein for 42-bp DNA sequences, please run:
 
 ```
 # Clone this repository
