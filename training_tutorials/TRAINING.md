@@ -32,7 +32,7 @@ pip install scikit-learn==0.24.2
 DeepCTCF can be retrained using user-provided quantitative DNA-binding
 affinity datasets.
 
-Input format:
+data format:
 
     affinity_value    DNA_sequence
 
@@ -102,14 +102,16 @@ The pretrained model used in this study is:
 Prediction:
 
 ``` bash
-python DeepCTCF_predict.py
+python DeepCTCF_predict.py -s New_Sequences.fasta -m ../model/DeepCTCF.h5
 ```
 
-Example files: - New_Sequences.fasta - DeepCTCF_predicted.csv
+Example files: 
+input:    - New_Sequences.fasta 
+output:   - DeepCTCF_predicted.csv
 
 # 8. Retraining DeepCTCF with new datasets
 
-Prepare a dataset following the required format, modify the input path
+Prepare a dataset following the required format, modify the training data path
 in `train.py`, and run:
 
 ``` bash
